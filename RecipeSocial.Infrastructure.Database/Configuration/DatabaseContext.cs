@@ -9,14 +9,14 @@ namespace RecipeSocial.Infrastructure.Database.Configuration
 {
     public class DatabaseContext : IdentityDbContext<User, Role, int>
     {
-        DbSet<Comment> Comment { get; set; }
-        DbSet<Ingredient> Ingredient { get; set; }
-        DbSet<Like> Like { get; set; }
-        DbSet<Measure> Measure { get; set; }
-        DbSet<RecipeTag> RecipeTag { get; set; }
-        DbSet<Tag> Tag { get; set; }
-        DbSet<Recipe> Recipe { get; set; }
-        DbSet<User> User { get; set; }
+        public DbSet<Comment> Comment { get; set; }
+        public DbSet<Ingredient> Ingredient { get; set; }
+        public DbSet<Like> Like { get; set; }
+        public DbSet<Measure> Measure { get; set; }
+        public DbSet<RecipeTag> RecipeTag { get; set; }
+        public DbSet<Tag> Tag { get; set; }
+        public DbSet<Recipe> Recipe { get; set; }
+        public DbSet<User> User { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
