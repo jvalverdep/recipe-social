@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RecipeSocial.Infrastructure.Database.Configuration
 {
-    public class DatabaseContext : IdentityDbContext<User, Role, int>
+    public class DatabaseContext : DbContext
     {
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Ingredient> Ingredient { get; set; }

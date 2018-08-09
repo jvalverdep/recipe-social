@@ -53,5 +53,10 @@ namespace RecipeSocial.Infrastructure.Database
         {
             Set.RemoveRange(entities);
         }
+
+        public void SaveChanges()
+        {
+            Context.SaveChanges();
+        }
     }
 }

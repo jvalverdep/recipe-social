@@ -8,18 +8,20 @@ namespace RecipeSocial.Domain.Database
 {
     public interface IRepository<T> where T: Base
     {
-        Task<T> GetAsync(long id);
+        T Get(long id);
 
-        Task<ICollection<T>> GetAllAsync();
+        ICollection<T> GetAll();
 
-        Task<ICollection<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        ICollection<T> Find(Expression<Func<T, bool>> predicate);
 
-        Task AddAsync(T entity);
+        void Add(T entity);
 
-        Task AddRangeAsync(IEnumerable<T> entities);
+        void AddRange(IEnumerable<T> entities);
 
         void Remove(T entity);
 
         void RemoveRange(IEnumerable<T> entities);
+
+        void SaveChanges();
     }
 }

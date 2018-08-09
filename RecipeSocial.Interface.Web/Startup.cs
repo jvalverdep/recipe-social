@@ -22,15 +22,6 @@ namespace RecipeSocial.Interface.Web
         {
             services.AddMvc();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<User, Role>()
-                .AddEntityFrameworkStores<DatabaseContext>()
-                .AddDefaultTokenProviders();
-
-            services.Configure<IdentityOptions>(options =>
-            {
-
-            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -44,7 +35,6 @@ namespace RecipeSocial.Interface.Web
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
