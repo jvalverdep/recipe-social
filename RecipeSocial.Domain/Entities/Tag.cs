@@ -5,7 +5,7 @@ namespace RecipeSocial.Domain.Entities
 {
     public class Tag : Base
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public ICollection<RecipeTag> RecipeTags { get; set; }
     }
