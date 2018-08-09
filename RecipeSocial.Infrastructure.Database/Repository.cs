@@ -5,7 +5,6 @@ using RecipeSocial.Domain.Entities.Template;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace RecipeSocial.Infrastructure.Database
 {
@@ -19,29 +18,29 @@ namespace RecipeSocial.Infrastructure.Database
             Set = Context.Set<T>();
         }
 
-        public async Task AddAsync(T entity)
+        public void Add(T entity)
         {
-            await Set.AddAsync(entity);
+            Set.AddAsync(entity);
         }
 
-        public async Task AddRangeAsync(IEnumerable<T> entities)
+        public void AddRange(IEnumerable<T> entities)
         {
-            await Set.AddRangeAsync(entities);
+            Set.AddRangeAsync(entities);
         }
 
-        public async Task<ICollection<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        public ICollection<T> Find(Expression<Func<T, bool>> predicate)
         {
-            return await Set.Where(predicate).ToListAsync();
+            return Set.Where(predicate).ToList();
         }
 
-        public async Task<T> GetAsync(long id)
+        public T Get(long id)
         {
-            return await Set.FindAsync(id);
+            return Set.Find(id);
         }
 
-        public async Task<ICollection<T>> GetAllAsync()
+        public ICollection<T> GetAll()
         {
-            return await Set.ToListAsync();
+            return Set.ToList();
         }
 
         public void Remove(T entity)
