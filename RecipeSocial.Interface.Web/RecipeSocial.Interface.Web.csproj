@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Recipe\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +21,7 @@
     <Content Remove="Views\Users\Details.cshtml" />
     <Content Remove="Views\Users\Edit.cshtml" />
     <Content Remove="Views\Users\Index.cshtml" />
+    <Content Remove="Views\Recipe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
@@ -27,9 +30,11 @@
     <None Include="Views\Users\Details.cshtml" />
     <None Include="Views\Users\Edit.cshtml" />
     <None Include="Views\Users\Index.cshtml" />
+    <None Include="Views\Recipe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj" />
     <ProjectReference Include="..\RecipeSocial.Domain\RecipeSocial.Domain.csproj" />
+    <ProjectReference Include="..\RecipeSocial.Infrastructure.Services\RecipeSocial.Infrastructure.Services.csproj" />
   </ItemGroup>
 </Project>
