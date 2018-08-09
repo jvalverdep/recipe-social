@@ -8,7 +8,7 @@ namespace RecipeSocial.Infrastructure.Database.Configuration.Mappers
         public static void Map(EntityTypeBuilder<User> builder)
         {
             builder.HasMany(user => user.Recipes)
-                .WithOne()
+                .WithOne(recipe => recipe.User)
                 .HasForeignKey(user => user.UserId);
         }
     }
