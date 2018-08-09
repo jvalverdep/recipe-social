@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using RecipeSocial.Domain.Database;
 using RecipeSocial.Domain.Entities.Template;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;

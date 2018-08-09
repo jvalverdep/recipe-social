@@ -5,23 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Shared\_RecipeCard.cshtml" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Users\Create.cshtml" />
+    <Content Remove="Views\Users\Delete.cshtml" />
+    <Content Remove="Views\Users\Details.cshtml" />
+    <Content Remove="Views\Users\Edit.cshtml" />
+    <Content Remove="Views\Users\Index.cshtml" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Users\Create.cshtml" />
+    <None Include="Views\Users\Delete.cshtml" />
+    <None Include="Views\Users\Details.cshtml" />
+    <None Include="Views\Users\Edit.cshtml" />
+    <None Include="Views\Users\Index.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj" />
+    <ProjectReference Include="..\RecipeSocial.Domain\RecipeSocial.Domain.csproj" />
   </ItemGroup>
-
 </Project>

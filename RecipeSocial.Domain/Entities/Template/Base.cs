@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RecipeSocial.Domain.Entities.Template
+﻿namespace RecipeSocial.Domain.Entities.Template
 {
     public class Base
     {

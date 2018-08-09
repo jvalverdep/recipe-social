@@ -29,7 +29,7 @@ namespace RecipeSocial.Interface.Web
 
             services.Configure<IdentityOptions>(options =>
             {
-                
+
             });
         }
 
