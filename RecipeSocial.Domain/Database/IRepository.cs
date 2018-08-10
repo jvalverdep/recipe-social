@@ -22,6 +22,8 @@ namespace RecipeSocial.Domain.Database
 
         void RemoveRange(IEnumerable<T> entities);
 
+        void Update(T entity);
+
         void SaveChanges();
     }
 }

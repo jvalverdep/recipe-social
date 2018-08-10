@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
   </ItemGroup>
 
@@ -22,11 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
-    <None Include="Views\Users\Create.cshtml" />
-    <None Include="Views\Users\Delete.cshtml" />
-    <None Include="Views\Users\Details.cshtml" />
-    <None Include="Views\Users\Edit.cshtml" />
-    <None Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj" />

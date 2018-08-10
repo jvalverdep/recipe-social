@@ -4,6 +4,7 @@ using RecipeSocial.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace RecipeSocial.Infrastructure.Services
@@ -14,6 +15,9 @@ namespace RecipeSocial.Infrastructure.Services
         private IRecipeTagRepository repositoryRecipeTag;
         private IRepository<Tag> repositoryTag;
         private IRepository<Like> repositoryLikes;
+
+        private Expression<Func<Recipe, object>>[] includes = { x => x.Ingredients, x => x.Preparations, x => x.RecipeTags, x => x.User };
+
         public RecipeService(IRepository<Recipe> repository, IRepository<Tag> repositoryTag, IRecipeTagRepository repositoryRecipeTag,IRepository<Like> repositoryLikes)
         {
             this.repositoryRecipeTag = repositoryRecipeTag;
@@ -38,11 +42,11 @@ namespace RecipeSocial.Infrastructure.Services
         }
         public Recipe GetRecipe(int id)
         {
-            return repository.Get(id,x=> x.RecipeTags);
+            return repository.Get(id, includes);
         }
         public ICollection<Recipe> GetTopRecipes()
         {
-            ICollection<Recipe> topRecipes = repository.GetAll(x => x.RecipeTags).OrderByDescending(x => x.TotalLikes).ToList();
+            ICollection<Recipe> topRecipes = repository.GetAll(includes).OrderByDescending(x => x.TotalLikes).ToList();
             return topRecipes;
         }
 
