@@ -10,13 +10,13 @@ namespace RecipeSocial.Infrastructure.Services
 {
     public class RecipeService : IRecipeService
     {
-        private IRepository<Recipe> repository;
+        private IRepository<Recipe> recipeRepository;
         private IRecipeTagRepository repositoryRecipeTag;
         private IRepository<Tag> repositoryTag;
-        public RecipeService(IRepository<Recipe> repository, IRepository<Tag> repositoryTag, IRecipeTagRepository repositoryRecipeTag)
+        public RecipeService(IRepository<Recipe> recipeRepository, IRepository<Tag> repositoryTag, IRecipeTagRepository repositoryRecipeTag)
         {
             this.repositoryRecipeTag = repositoryRecipeTag;
-            this.repository = repository;
+            this.recipeRepository = recipeRepository;
             this.repositoryTag = repositoryTag;
         }
         public ICollection<Recipe> SearchRecipesByTag(string tagName)
@@ -26,20 +26,34 @@ namespace RecipeSocial.Infrastructure.Services
             ICollection<RecipeTag> recipeTags = repositoryRecipeTag.Find(x => x.TagId == recipeTag.Id);
             ICollection<int> recipeIds = recipeTags.Select(x => x.RecipeId).ToList();
 
-            ICollection<Recipe> recipes = repository.Find(recipe => recipeIds.Contains(recipe.Id));
+            ICollection<Recipe> recipes = recipeRepository.Find(recipe => recipeIds.Contains(recipe.Id));
 
             return recipes;
         }
         public ICollection<Recipe> GetRecipes()
         {
-            return repository.GetAll();
+            return recipeRepository.GetAll();
         }
         public Recipe GetRecipe(int id)
         {
-            return repository.Get(id);
+            return recipeRepository.Get(id);
         }
 
+        public void CommentRecipe(int id, string comment, User user)
+        {
+            Recipe recipe = recipeRepository.Get(id);
 
+            Comment newComment = new Comment
+            {
+                Text = comment,
+                UserId = user.Id,
+                RecipeId = id
+            };
+
+            recipe.Comments.Add(newComment);
+
+            recipeRepository.Update(recipe);
+        }
 
     }
 }
