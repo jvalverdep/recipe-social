@@ -1,23 +1,23 @@
-﻿using RecipeSocial.Infrastructure.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using RecipeSocial.Domain.Services;
 
 namespace RecipeSocial.Interface.Web.Controllers
 {
     public class RecipesController
     {
-        private CommentService commentService;
+        private ICommentService commentService;
 
-        public RecipesController(CommentService commentService)
+        public RecipesController(ICommentService commentService)
         {
             this.commentService = commentService;
         }
 
-        public void Comment(int id, string text)
+        [HttpPost]
+        public void Comment(int id, string comment)
         {
-            commentService.Comment(id, text, 1);
+            int userId = 1;
+
+            commentService.Comment(id, comment, userId);
         }
     }
 }

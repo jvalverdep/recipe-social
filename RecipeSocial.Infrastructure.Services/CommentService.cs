@@ -22,6 +22,8 @@ namespace RecipeSocial.Infrastructure.Services
                 Text = text,
                 UserId = userId
             };
+
+            repository.Add(comment);
         }
     }
 }

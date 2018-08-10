@@ -58,8 +58,9 @@
             <li><a href="#" title="" class="com"><img src="~/img/com.png" alt=""> Comment 15</a></li>
         </ul>
 
-        @using (Html.BeginForm("Comment", "Recipe", FormMethod.Post))
+        @using (Html.BeginForm("Comment", "Recipes", FormMethod.Post))
         {
+            @Html.Hidden("id", Model.Id)
             <div class="form-group">
                 <div class="input-group mb-3">
                     @Html.TextBox("comment", "", new { @class = "form-control" })
