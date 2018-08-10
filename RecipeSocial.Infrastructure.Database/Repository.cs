@@ -33,14 +33,28 @@ namespace RecipeSocial.Infrastructure.Database
             return Set.Where(predicate).ToList();
         }
 
-        public T Get(long id)
+        public T Get(long id, params Expression<Func<T, object>>[] includes)
         {
-            return Set.Find(id);
+            var query = Set.Where(x => x.Id == id);
+
+            if (includes != null)
+            {
+                query = AddMultipleIncludes(query, includes);
+            }
+
+            return query.FirstOrDefault();
         }
 
-        public ICollection<T> GetAll()
+        public ICollection<T> GetAll(params Expression<Func<T, object>>[] includes)
         {
-            return Set.ToList();
+            var query = Set.AsQueryable();
+
+            if (includes != null)
+            {
+                query = AddMultipleIncludes(query, includes);
+            }
+
+            return query.ToList();
         }
 
         public void Remove(T entity)
@@ -56,6 +70,17 @@ namespace RecipeSocial.Infrastructure.Database
         public void SaveChanges()
         {
             Context.SaveChanges();
+        }
+
+        private IQueryable<T> AddMultipleIncludes(IQueryable<T> query, params Expression<Func<T, object>>[] includes)
+        {
+            var newQuery = query;
+            if (includes != null)
+            {
+                newQuery = includes.Aggregate(query, (current, include) => current.Include(include));
+            }
+
+            return newQuery;
         }
     }
 }
