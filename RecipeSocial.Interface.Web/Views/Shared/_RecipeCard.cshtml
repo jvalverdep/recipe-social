@@ -3,60 +3,95 @@
 @{
     Layout = null;
 }
+<div class="posty">
+    <div class="post-bar no-margin">
 
-<div class="post-bar">
-    <div class="post_topbar">
-        <div class="usy-dt">
-            <img src="images/resources/us-pic.png" alt="">
-            <div class="usy-name">
-                <h3>@Model.Name</h3>
-                <span><img src="images/clock.png" alt="">3 min ago</span>
+        <div class="post_topbar">
+            <div class="usy-dt">
+                <img src="images/resources/us-pic.png" alt="">
+                <div class="usy-name">
+                    <h3>@Model.Name</h3>
+                    <span><img src="images/clock.png" alt="">3 min ago</span>
+                </div>
+            </div>
+            <div class="ed-opts">
+                <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                <ul class="ed-options">
+                    <li><a href="#" title="">Edit Post</a></li>
+                    <li><a href="#" title="">Unsaved</a></li>
+                    <li><a href="#" title="">Unbid</a></li>
+                    <li><a href="#" title="">Close</a></li>
+                    <li><a href="#" title="">Hide</a></li>
+                </ul>
             </div>
         </div>
-        <div class="ed-opts">
-            <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-            <ul class="ed-options">
-                <li><a href="#" title="">Edit Post</a></li>
-                <li><a href="#" title="">Unsaved</a></li>
-                <li><a href="#" title="">Unbid</a></li>
-                <li><a href="#" title="">Close</a></li>
-                <li><a href="#" title="">Hide</a></li>
+        <div class="epi-sec">
+            <ul class="descp">
+                <li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
+                <li><img src="images/icon9.png" alt=""><span>India</span></li>
+            </ul>
+            <ul class="bk-links">
+                <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+                <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
             </ul>
         </div>
-    </div>
-    <div class="epi-sec">
-        <ul class="descp">
-            <li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-            <li><img src="images/icon9.png" alt=""><span>India</span></li>
-        </ul>
-        <ul class="bk-links">
-            <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-            <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-        </ul>
-    </div>
-    <div class="job_descp">
-        <h3>Senior Wordpress Developer</h3>
-        <ul class="job-dt">
-            <li><a href="#" title="">Full Time</a></li>
-            <li><span>$30 / hr</span></li>
-        </ul>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-        <ul class="skill-tags">
-            @foreach (RecipeTag recipeTag in Model.RecipeTags)
-            {
-                <li><a href="#" title="">@recipeTag.TagId</a></li>
-            }
+        <div class="job_descp">
+            <h3>Senior Wordpress Developer</h3>
+            <ul class="job-dt">
+                <li><a href="#" title="">Full Time</a></li>
+                <li><span>$30 / hr</span></li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
+            <ul class="skill-tags">
+                @foreach (RecipeTag recipeTag in Model.RecipeTags)
+                {
+                    <li><a href="#" title="">@recipeTag.TagId</a></li>
+                }
 
 
-        </ul>
+            </ul>
+        </div>
+        <div class="job-status-bar">
+            <ul class="like-com">
+                <li>
+                    <a href="#"><i class="la la-heart"></i>@Model.TotalLikes Likes</a>
+                    <img src="images/liked-img.png" alt="">
+                </li>
+            </ul>
+            <a><i class="la la-eye"></i>Views 50</a>
+        </div>
     </div>
-    <div class="job-status-bar">
-        <ul class="like-com">
-            <li>
-                <a href="#"><i class="la la-heart"></i>@Model.TotalLikes Likes</a>
-                <img src="images/liked-img.png" alt="">
-            </li>
-        </ul>
-        <a><i class="la la-eye"></i>Views 50</a>
+    <div class="comment-section">
+        @using (Html.BeginForm("Comment", "Recipes", FormMethod.Post))
+        {
+            @Html.Hidden("id", Model.Id)
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    @Html.TextBox("comment", "", new { @class = "form-control" })
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Send</button>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="comment-sec">
+            <ul>
+                @foreach (Comment comment in Model.Comments)
+                {
+                    <li>
+                        <div class="comment-list">
+                            <div class="bg-img">
+                                <img src="/img/resources/bg-img3.png" alt="">
+                            </div>
+                            <div class="comment">
+                                <h3>John Doe</h3>
+                                <span><img src="/img/clock.png" alt=""> 3 min ago</span>
+                                <p>@comment.Text</p>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 </div>

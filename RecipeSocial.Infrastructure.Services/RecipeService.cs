@@ -38,7 +38,7 @@ namespace RecipeSocial.Infrastructure.Services
         }
         public Recipe GetRecipe(int id)
         {
-            return repository.Get(id);
+            return repository.Get(id,x=> x.RecipeTags);
         }
         public ICollection<Recipe> GetTopRecipes()
         {
