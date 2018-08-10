@@ -1,4 +1,4 @@
-﻿
+﻿@model IndexViewModel
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -37,7 +37,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            @await Html.PartialAsync("_Suggestions")
+                            @await Html.PartialAsync("_Suggestions", null, null)
                             <div class="tags-sec full-width">
                                 <ul>
                                     <li><a href="#" title="">Help Center</a></li>
@@ -74,75 +74,27 @@
                                 <div class="top-profiles">
                                     <div class="pf-hd">
                                         <h3>Top Recetas</h3>
-                                        <i class="la la-ellipsis-v"></i>
+                                        <a class="btn btn-secondary float-right" href="@Url.Action("TopRecipe", "Recipes")">Ver mas</a>
                                     </div>
                                     <div class="profiles-slider">
-                                        <div class="user-profy">
-                                            <img src="~/img/resources/user1.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="followw">Follow</a></li>
-                                                <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
-                                                <li><a href="#" title="" class="hire">hire</a></li>
-                                            </ul>
-                                            <a href="#" title="">View Profile</a>
-                                        </div><!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="~/img/resources/user2.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="followw">Follow</a></li>
-                                                <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
-                                                <li><a href="#" title="" class="hire">hire</a></li>
-                                            </ul>
-                                            <a href="#" title="">View Profile</a>
-                                        </div><!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="~/img/resources/user3.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="followw">Follow</a></li>
-                                                <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
-                                                <li><a href="#" title="" class="hire">hire</a></li>
-                                            </ul>
-                                            <a href="#" title="">View Profile</a>
-                                        </div><!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="~/img/resources/user1.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="followw">Follow</a></li>
-                                                <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
-                                                <li><a href="#" title="" class="hire">hire</a></li>
-                                            </ul>
-                                            <a href="#" title="">View Profile</a>
-                                        </div><!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="~/img/resources/user2.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="followw">Follow</a></li>
-                                                <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
-                                                <li><a href="#" title="" class="hire">hire</a></li>
-                                            </ul>
-                                            <a href="#" title="">View Profile</a>
-                                        </div><!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="~/img/resources/user3.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="followw">Follow</a></li>
-                                                <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
-                                                <li><a href="#" title="" class="hire">hire</a></li>
-                                            </ul>
-                                            <a href="#" title="">View Profile</a>
-                                        </div><!--user-profy end-->
+                                        @foreach (Recipe recipe in Model.topList)
+                                        {
+                                            <div class="user-profy">
+                                                <img src="~/img/resources/user1.png" alt="">
+                                                <h3>@recipe.Name</h3>
+                                                <span>Graphic Designer</span>
+                                                <ul>
+                                                    <li><a href="#" title="" class="followw">Follow</a></li>
+                                                    <li><a href="#" title="" class="envlp"><img src="~/img/envelop.png" alt=""></a></li>
+                                                    <li><a href="#" title="" class="hire">hire</a></li>
+                                                </ul>
+                                                <ul class="like-com">
+                                                    <li>
+                                                        <a href="#" style="color: #b2b2b2;"><i class="la la-heart"></i> Like</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
                                     </div><!--profiles-slider end-->
                                 </div>
                                 <div class="post-bar">

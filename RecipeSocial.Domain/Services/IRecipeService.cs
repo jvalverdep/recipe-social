@@ -10,6 +10,6 @@ namespace RecipeSocial.Domain.Services
         ICollection<Recipe> GetRecipes();
         ICollection<Recipe> SearchRecipesByTag(string tag);
         Recipe GetRecipe(int id);
-        void CommentRecipe(int id, string comment, User user);
+        ICollection<Recipe> GetTopRecipes();
     }
 }

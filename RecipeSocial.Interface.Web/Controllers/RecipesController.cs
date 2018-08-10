@@ -9,25 +9,22 @@ namespace RecipeSocial.Interface.Web.Controllers
     public class RecipesController : Controller
     {
         private readonly IRecipeService recipeService;
-        private ICommentService commentService;
 
-        public RecipesController(IRecipeService recipeService, ICommentService commentService)
+        public RecipesController(IRecipeService recipeService)
         {
             this.recipeService = recipeService;
-            this.commentService = commentService;
         }
         public IActionResult Search(string tag)
         {
             ICollection<Recipe> recipes = recipeService.SearchRecipesByTag(tag);
             return View(recipes);
         }
-
-        [HttpPost]
-        public void Comment(int id, string comment)
+        public IActionResult TopRecipe(string tag)
         {
-            int userId = 1;
-
-            commentService.Comment(id, comment, userId);
+            ICollection<Recipe> recipes = recipeService.GetTopRecipes();
+            return View("Search", recipes);
         }
+
+
     }
 }

@@ -10,14 +10,16 @@ namespace RecipeSocial.Infrastructure.Services
 {
     public class RecipeService : IRecipeService
     {
-        private IRepository<Recipe> recipeRepository;
+        private IRepository<Recipe> repository;
         private IRecipeTagRepository repositoryRecipeTag;
         private IRepository<Tag> repositoryTag;
-        public RecipeService(IRepository<Recipe> recipeRepository, IRepository<Tag> repositoryTag, IRecipeTagRepository repositoryRecipeTag)
+        private IRepository<Like> repositoryLikes;
+        public RecipeService(IRepository<Recipe> repository, IRepository<Tag> repositoryTag, IRecipeTagRepository repositoryRecipeTag,IRepository<Like> repositoryLikes)
         {
             this.repositoryRecipeTag = repositoryRecipeTag;
-            this.recipeRepository = recipeRepository;
+            this.repository = repository;
             this.repositoryTag = repositoryTag;
+            this.repositoryLikes = repositoryLikes;
         }
         public ICollection<Recipe> SearchRecipesByTag(string tagName)
         {
@@ -26,34 +28,24 @@ namespace RecipeSocial.Infrastructure.Services
             ICollection<RecipeTag> recipeTags = repositoryRecipeTag.Find(x => x.TagId == recipeTag.Id);
             ICollection<int> recipeIds = recipeTags.Select(x => x.RecipeId).ToList();
 
-            ICollection<Recipe> recipes = recipeRepository.Find(recipe => recipeIds.Contains(recipe.Id));
+            ICollection<Recipe> recipes = repository.Find(recipe => recipeIds.Contains(recipe.Id));
 
             return recipes;
         }
         public ICollection<Recipe> GetRecipes()
         {
-            return recipeRepository.GetAll();
+            return repository.GetAll();
         }
         public Recipe GetRecipe(int id)
         {
-            return recipeRepository.Get(id);
+            return repository.Get(id);
         }
-
-        public void CommentRecipe(int id, string comment, User user)
+        public ICollection<Recipe> GetTopRecipes()
         {
-            Recipe recipe = recipeRepository.Get(id);
-
-            Comment newComment = new Comment
-            {
-                Text = comment,
-                UserId = user.Id,
-                RecipeId = id
-            };
-
-            recipe.Comments.Add(newComment);
-
-            recipeRepository.Update(recipe);
+            ICollection<Recipe> topRecipes = repository.GetAll(x => x.RecipeTags).OrderByDescending(x => x.TotalLikes).ToList();
+            return topRecipes;
         }
+
 
     }
 }
