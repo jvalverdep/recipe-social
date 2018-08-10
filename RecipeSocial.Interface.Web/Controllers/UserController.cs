@@ -14,18 +14,24 @@ namespace RecipeSocial.Interface.Web.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly IRecipeService recipeService;
-
-        public UsersController(IRecipeService service)
+        private readonly IUserService userService;
+        public UsersController(IUserService userService)
         {
-            recipeService = service;
+            this.userService = userService;
         }
-
-        public IActionResult Profile()
+        public IActionResult Profile(int? id)
         {
-            UserViewModel model = new UserViewModel();
-            model.LoadData(recipeService);
-            return View(model);
+            
+            if(id == null)
+            {
+                return View();
+            }
+            User user = userService.GetUserWithRecipes(id.Value);
+            if (user == null)
+            {
+                return View();
+            }
+            return View(user);
         }
     }
 }

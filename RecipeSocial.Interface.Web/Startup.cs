@@ -31,6 +31,7 @@ namespace RecipeSocial.Interface.Web
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IRecipeTagRepository, RecipeTagRepository>();
             services.AddScoped<IRecipeService, RecipeService>();
+            services.AddScoped<IUserService, UserService>();
 
             //services.AddTransient<IRecipeTagRepository, RecipeTagRepository>();
         }

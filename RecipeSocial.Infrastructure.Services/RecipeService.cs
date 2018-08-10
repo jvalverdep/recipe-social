@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using RecipeSocial.Domain.Database;
+﻿using RecipeSocial.Domain.Database;
 using RecipeSocial.Domain.Entities;
 using RecipeSocial.Domain.Services;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -10,50 +10,47 @@ namespace RecipeSocial.Infrastructure.Services
 {
     public class RecipeService : IRecipeService
     {
-        private readonly IRepository<Recipe> recipeRepository;
-        private IRecipeTagRepository recipeTagRepository;
-        private IRepository<Tag> tagRepository;
-        public RecipeService(IRepository<Recipe> repository, IRepository<Tag> tagRepository, IRecipeTagRepository recipeTagRepository)
+        private IRepository<Recipe> repository;
+        private IRecipeTagRepository repositoryRecipeTag;
+        private IRepository<Tag> repositoryTag;
+        private IRepository<Like> repositoryLikes;
+        public RecipeService(IRepository<Recipe> repository, IRepository<Tag> repositoryTag, IRecipeTagRepository repositoryRecipeTag,IRepository<Like> repositoryLikes)
         {
-            this.recipeRepository = repository;
-            this.tagRepository = tagRepository;
-            this.recipeTagRepository = recipeTagRepository;
-        }
-
-        public void DeleteRecipe(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Recipe GetRecipe(int id)
-        {
-            return recipeRepository.Get(id);
-        }
-
-        public IEnumerable<Recipe> GetRecipes()
-        {
-            return recipeRepository.GetAll();
-        }
-        
-        public void InsertRecipe(Recipe recipe)
-        {
-            recipeRepository.Add(recipe);
-        }
-
-        public void UpdateRecipe(Recipe recipe)
-        {
-            recipeRepository.Update(recipe);
+            this.repositoryRecipeTag = repositoryRecipeTag;
+            this.repository = repository;
+            this.repositoryTag = repositoryTag;
+            this.repositoryLikes = repositoryLikes;
         }
         public ICollection<Recipe> SearchRecipesByTag(string tagName)
         {
-            Tag tag = tagRepository.Find(t => t.Name == tagName).First();
+            Tag recipeTag = repositoryTag.Find(tag => tag.Name == tagName).First();
 
-            ICollection<RecipeTag> recipeTags= recipeTagRepository.Find(x => x.TagId == tag.Id);
+            ICollection<RecipeTag> recipeTags = repositoryRecipeTag.Find(x => x.TagId == recipeTag.Id);
             ICollection<int> recipeIds = recipeTags.Select(x => x.RecipeId).ToList();
 
-            ICollection<Recipe> recipes = recipeRepository.Find(recipe => recipeIds.Contains(recipe.Id));
+            ICollection<Recipe> recipes = repository.Find(recipe => recipeIds.Contains(recipe.Id));
 
             return recipes;
         }
+        public ICollection<Recipe> GetRecipes()
+        {
+            return repository.GetAll();
+        }
+
+        public void InsertRecipe(Recipe recipe)
+        {
+            repository.Add(recipe);
+        }
+        public Recipe GetRecipe(int id)
+        {
+            return repository.Get(id,x=> x.RecipeTags);
+        }
+        public ICollection<Recipe> GetTopRecipes()
+        {
+            ICollection<Recipe> topRecipes = repository.GetAll(x => x.RecipeTags).OrderByDescending(x => x.TotalLikes).ToList();
+            return topRecipes;
+        }
+
+
     }
 }

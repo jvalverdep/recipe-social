@@ -19,8 +19,17 @@ namespace RecipeSocial.Interface.Web.Controllers
             ICollection<Recipe> recipes = recipeService.SearchRecipesByTag(tag);
             return View(recipes);
         }
+        public IActionResult TopRecipe(string tag)
+        {
+            ICollection<Recipe> recipes = recipeService.GetTopRecipes();
+            return View("Search", recipes);
+        }
 
+        public IActionResult Detail(int id)
+        {
+            Recipe recipe= recipeService.GetRecipe(id);
 
-
+            return View(recipe);
+        }
     }
 }

@@ -7,11 +7,10 @@ namespace RecipeSocial.Domain.Services
 {
     public interface IRecipeService
     {
-        Recipe GetRecipe(int id);
-        IEnumerable<Recipe> GetRecipes();
-        void InsertRecipe(Recipe recipe);
-        void UpdateRecipe(Recipe recipe);
-        void DeleteRecipe(int id);
+        ICollection<Recipe> GetRecipes();
         ICollection<Recipe> SearchRecipesByTag(string tag);
+        Recipe GetRecipe(int id);
+        void InsertRecipe(Recipe recipe);
+        ICollection<Recipe> GetTopRecipes();
     }
 }
