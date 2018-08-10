@@ -1,6 +1,7 @@
-﻿using System;
-using RecipeSocial.Domain.Entities;
+﻿﻿using RecipeSocial.Domain.Entities;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace RecipeSocial.Domain.Services
 {
@@ -11,5 +12,6 @@ namespace RecipeSocial.Domain.Services
         void InsertRecipe(Recipe recipe);
         void UpdateRecipe(Recipe recipe);
         void DeleteRecipe(int id);
+        ICollection<Recipe> SearchRecipesByTag(string tag);
     }
 }

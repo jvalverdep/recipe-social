@@ -29,6 +29,7 @@ namespace RecipeSocial.Interface.Web
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<DbContext, DatabaseContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IRecipeTagRepository, RecipeTagRepository>();
             services.AddScoped<IRecipeService, RecipeService>();
 
             //services.AddTransient<IRecipeTagRepository, RecipeTagRepository>();
