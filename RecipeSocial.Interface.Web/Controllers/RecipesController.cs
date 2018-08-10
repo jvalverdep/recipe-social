@@ -25,6 +25,11 @@ namespace RecipeSocial.Interface.Web.Controllers
             return View("Search", recipes);
         }
 
+        public IActionResult Detail(int id)
+        {
+            Recipe recipe= recipeService.GetRecipe(id);
 
+            return View(recipe);
+        }
     }
 }
