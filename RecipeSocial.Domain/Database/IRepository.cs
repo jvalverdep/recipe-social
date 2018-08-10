@@ -8,7 +8,7 @@ namespace RecipeSocial.Domain.Database
 {
     public interface IRepository<T> where T: Base
     {
-        T Get(long id, params Expression<Func<T, object>>[] includes);
+        T Get(int id, params Expression<Func<T, object>>[] includes);
 
         ICollection<T> GetAll(params Expression<Func<T, object>>[] includes);
 
