@@ -33,7 +33,7 @@ namespace RecipeSocial.Infrastructure.Database
             return Set.Where(predicate).ToList();
         }
 
-        public T Get(long id, params Expression<Func<T, object>>[] includes)
+        public T Get(int id, params Expression<Func<T, object>>[] includes)
         {
             var query = Set.Where(x => x.Id == id);
 
