@@ -1,0 +1,82 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin">
+                            @await Html.PartialAsync("_Suggestions", null, null)
+                            <div class="tags-sec full-width">
+                                <ul>
+                                    <li><a href="#" title="">Help Center</a></li>
+                                    <li><a href="#" title="">About</a></li>
+                                    <li><a href="#" title="">Privacy Policy</a></li>
+                                    <li><a href="#" title="">Community Guidelines</a></li>
+                                    <li><a href="#" title="">Cookies Policy</a></li>
+                                    <li><a href="#" title="">Career</a></li>
+                                    <li><a href="#" title="">Language</a></li>
+                                    <li><a href="#" title="">Copyright Policy</a></li>
+                                </ul>
+                                <div class="cp-sec">
+                                    <img src="~/img/logo2.png" alt="">
+                                    <p><img src="~/img/cp.png" alt="">Copyright 2018</p>
+                                </div>
+                            </div><!--tags-sec end-->
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 no-pd">
+                        <div class="main-ws-sec">
+                            <div class="posts-section">
+                                <div class="top-profiles">
+                                    <div class="pf-hd">
+                                        <h3>Top Recetas</h3>
+                                        <a class="btn btn-secondary float-right" href="@Url.Action("TopRecipe", "Recipes")">Ver mas</a>
+                                    </div>
+                                    <div class="profiles-slider">
+                                        @foreach (Recipe recipe in Model.topList)
+                                        {
+                                            <div class="user-profy">
+                                                <img src="~/img/resources/user1.png" alt="">
+                                                <h3>@recipe.Name</h3>
+                                                <span>Graphic Designer</span>
+                                                <ul>
+                                                    <li><a href="@Url.Action("Detail", "Recipes", new { id = recipe.Id })" title="" class="followw">Ver</a></li>
+                                                </ul>
+                                                <ul class="like-com">
+                                                    <li>
+                                                        <a href="#" style="color: #b2b2b2;"><i class="la la-heart"></i>@recipe.TotalLikes Likes</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="post-topbar">
+                                    <div class="user-picy">
+                                        <img src="~/img/resources/user-pic.png" alt="">
+                                    </div>
+                                    <div class="post-st">
+                                        <ul>
+                                            <li><a class="post_project" href="#" title="">Post a Project</a></li>
+                                            <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @foreach (Recipe recipe in Model.generalRecipeList)
+                                {
+                                    @await Html.PartialAsync("_RecipeCard", recipe)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

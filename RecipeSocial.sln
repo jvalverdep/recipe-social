@@ -1,0 +1,35 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSocial.Interface.Web", "RecipeSocial.Interface.Web\RecipeSocial.Interface.Web.csproj", "{8B75CCFE-DBA1-447A-A351-70776B89734E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSocial.Domain", "RecipeSocial.Domain\RecipeSocial.Domain.csproj", "{64843D8A-2854-4E65-8FEE-8BBF81D0674C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSocial.Infrastructure.Database", "RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj", "{1A327261-62C2-4176-A60B-DA1C98240539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSocial.Infrastructure.Services", "RecipeSocial.Infrastructure.Services\RecipeSocial.Infrastructure.Services.csproj", "{3DB81A80-2491-438D-8E96-1C587C90D026}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B75CCFE-DBA1-447A-A351-70776B89734E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B75CCFE-DBA1-447A-A351-70776B89734E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B75CCFE-DBA1-447A-A351-70776B89734E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B75CCFE-DBA1-447A-A351-70776B89734E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64843D8A-2854-4E65-8FEE-8BBF81D0674C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64843D8A-2854-4E65-8FEE-8BBF81D0674C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64843D8A-2854-4E65-8FEE-8BBF81D0674C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64843D8A-2854-4E65-8FEE-8BBF81D0674C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A327261-62C2-4176-A60B-DA1C98240539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A327261-62C2-4176-A60B-DA1C98240539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A327261-62C2-4176-A60B-DA1C98240539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A327261-62C2-4176-A60B-DA1C98240539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB81A80-2491-438D-8E96-1C587C90D026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB81A80-2491-438D-8E96-1C587C90D026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB81A80-2491-438D-8E96-1C587C90D026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB81A80-2491-438D-8E96-1C587C90D026}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
