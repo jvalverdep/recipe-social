@@ -5403,3 +5403,21 @@ a:hover {
     transform: scale(1.0);
   }
 }
+
+.instruction li a, .ingredients li a {
+    display: inline-block;
+    color: white;
+    font-size: 14px;
+    background-color: orangered;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    padding: 7px 15px;
+    font-weight: 600;
+}
+
+.instruction li, .ingredients li {
+    padding: 4px;
+}
