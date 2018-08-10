@@ -27,5 +27,15 @@ namespace RecipeSocial.Interface.Web.Controllers
             model.Recipes = recipeService.GetRecipes().ToList();
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Create(string title, string description)
+        {
+            RecipeViewModel model = new RecipeViewModel();
+            model.recipe.Name = title;
+            model.recipe.UserId = 1;
+            recipeService.InsertRecipe(model.recipe);
+            return RedirectToAction("Index");
+        }
     }
 }

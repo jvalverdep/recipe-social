@@ -1,10 +1,11 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="cover-sec">
-    <img src="~/img/resources/cover-img.jpg" alt="">
+    <img src="~/img/resources/0.jpg" alt="">
 </section>
 
 <main>
@@ -19,9 +20,9 @@
                                     <img src="~/img/resources/user-pro-img.png" alt="">
                                 </div><!--user-pro-img end-->
                                 <div class="user_pro_status">
-                                    <ul class="flw-hr">
-                                        <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
-                                    </ul>
+                                    <div class="flw-hr" style="font-size: 30px; font-weight: 500">
+                                        Javier Valverde
+                                    </div>
                                     <ul class="flw-status">
                                         <li>
                                             <span>Following</span>
@@ -32,13 +33,19 @@
                                             <b>155</b>
                                         </li>
                                     </ul>
+                                    <ul class=flw-status style="margin-top: 15px;">
+                                        <li>
+                                            <span>Recipes Nº</span>
+                                            <b>10</b>
+                                        </li>
+                                    </ul>
                                 </div><!--user_pro_status end-->
                             </div><!--user_profile end-->
-                            <div class="suggestions full-width">
+                            @*<div class="suggestions full-width">
                                 <div class="sd-title">
                                     <h3>Suggestions</h3>
                                     <i class="la la-ellipsis-v"></i>
-                                </div><!--sd-title end-->
+                                </div>sd-title end
                                 <div class="suggestions-list">
                                     <div class="suggestion-usd">
                                         <img src="~/img/resources/s1.png" alt="">
@@ -92,12 +99,12 @@
                                         <a href="#" title="">View More</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="main-ws-sec">
-                            <div class="user-tab-sec">
+                            @*<div class="user-tab-sec">
                                 <h3>John Doe</h3>
                                 <div class="star-descp">
                                     <span>Graphic Designer at Self Employed</span>
@@ -109,9 +116,22 @@
                                         <li><i class="fa fa-star-half-o"></i></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="product-feed-tab current" id="feed-dd">
                                 <div class="posts-section">
+                                    <div class="post-topbar">
+                                        <div class=usy-dt>
+                                            <img src="~/img/resources/us-pic.png" alt="">
+                                            <div class=usy-name>
+                                                <h1>What's on your mind, Javier?</h1>
+                                            </div>
+                                        </div>
+                                        <div class="post-st">
+                                            <ul>
+                                                <li><a class="post_project" href="#" title="">Post a Project</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                     <div class="post-bar">
                                         <div class="post_topbar">
                                             <div class="usy-dt">

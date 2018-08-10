@@ -26,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Shared\_SmallRecipeCard.html" />
+    <None Remove="ViewModels\UserViewModel.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
