@@ -31,5 +31,11 @@
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj" />
     <ProjectReference Include="..\RecipeSocial.Domain\RecipeSocial.Domain.csproj" />
+    <ProjectReference Include="..\RecipeSocial.Infrastructure.Services\RecipeSocial.Infrastructure.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Views\Recipes\Detail.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 </Project>

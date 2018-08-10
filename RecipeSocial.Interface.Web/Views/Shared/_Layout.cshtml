@@ -28,10 +28,11 @@
                         </a>
                     </div>
                     <div class="search-bar">
-                        <form>
-                            <input type="text" name="search" placeholder="Buscar...">
+                        @using (Html.BeginForm("Search", "Recipes"))
+                        {
+                            @Html.TextBox("tag")
                             <button type="submit"><i class="la la-search"></i></button>
-                        </form>
+                        }
                     </div>
                     <nav>
                         <ul>
