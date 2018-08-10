@@ -30,6 +30,7 @@
                     <div class="search-bar">
                         @using (Html.BeginForm("Search", "Recipes"))
                         {
+                            @Html.AntiForgeryToken()
                             @Html.TextBox("tag")
                             <button type="submit"><i class="la la-search"></i></button>
                         }
@@ -43,7 +44,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="companies.html" title="">
+                                <a href="@Url.Action("TopRecipe", "Recipes")" title="">
                                     <span><img src="~/img/icon2.png" alt=""></span>
                                     Recetas Top
                                 </a>

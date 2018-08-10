@@ -13,6 +13,7 @@ namespace RecipeSocial.Interface.Web.Controllers
 {
     public class UsersController : Controller
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(UsersController));
         private readonly IUserService userService;
 
         public UsersController(IUserService userService)
@@ -21,17 +22,28 @@ namespace RecipeSocial.Interface.Web.Controllers
         }
         public IActionResult Profile(int? id)
         {
-            
-            if(id == null)
+            IActionResult result;
+            try
             {
-                return View();
+                if (id == null)
+                {
+                    throw new ArgumentNullException("User Id");
+                }
+                User user = userService.GetUserWithRecipes(id.Value);
+                if (user == null)
+                {
+                    throw new ArgumentNullException("User");
+                }
+
+                result = View(user);
             }
-            User user = userService.GetUserWithRecipes(id.Value);
-            if (user == null)
+            catch (Exception ex)
             {
-                return View();
+                log.Error(ex);
+                result = StatusCode(500);
             }
-            return View(user);
+
+            return result;
         }
     }
 }

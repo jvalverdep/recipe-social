@@ -32,6 +32,7 @@ namespace RecipeSocial.Interface.Web
             services.AddTransient<IRecipeTagRepository, RecipeTagRepository>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
