@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Entities\" />
+    <Folder Include="Database\" />
     <Folder Include="Entities\Template\" />
   </ItemGroup>
   <ItemGroup>
