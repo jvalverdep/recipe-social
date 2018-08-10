@@ -20,7 +20,9 @@ namespace RecipeSocial.Infrastructure.Database
 
         public void Add(T entity)
         {
-            Set.AddAsync(entity);
+            Set.Add(entity);
+            //Context.Add(entity);
+            SaveChanges();
         }
 
         public void AddRange(IEnumerable<T> entities)

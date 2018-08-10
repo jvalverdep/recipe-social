@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Recipe\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,12 @@
     <Content Remove="Views\Users\Details.cshtml" />
     <Content Remove="Views\Users\Edit.cshtml" />
     <Content Remove="Views\Users\Index.cshtml" />
+    <Content Remove="Views\Recipe\Index.cshtml" />
+    <Content Remove="Views\Shared\_SmallRecipeCard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Shared\_SmallRecipeCard.html" />
+    <None Remove="ViewModels\UserViewModel.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />

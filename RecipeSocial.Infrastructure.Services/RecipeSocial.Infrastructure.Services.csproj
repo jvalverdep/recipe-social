@@ -7,5 +7,4 @@
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Domain\RecipeSocial.Domain.csproj" />
   </ItemGroup>
-
 </Project>
