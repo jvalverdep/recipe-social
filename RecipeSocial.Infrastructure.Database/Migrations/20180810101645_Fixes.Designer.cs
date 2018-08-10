@@ -10,8 +10,8 @@ using RecipeSocial.Infrastructure.Database.Configuration;
 namespace RecipeSocial.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180809215441_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20180810101645_Fixes")]
+    partial class Fixes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,11 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<int>("RecipeId");
+
+                    b.Property<string>("Text");
 
                     b.Property<int>("UserId");
 
@@ -52,6 +56,8 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                         .IsRequired();
 
                     b.Property<int>("Order");
+
+                    b.Property<double>("Quantity");
 
                     b.Property<int>("RecipeId");
 
@@ -125,6 +131,8 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Name")
                         .IsRequired();
 
@@ -132,15 +140,11 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
 
                     b.Property<int>("UserId");
 
-                    b.Property<int?>("UserId1");
-
                     b.Property<int>("Views");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Recipe");
                 });
@@ -164,7 +168,8 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -178,6 +183,10 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<string>("Password");
 
@@ -235,14 +244,9 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("RecipeSocial.Domain.Entities.Recipe", b =>
                 {
-                    b.HasOne("RecipeSocial.Domain.Entities.User")
+                    b.HasOne("RecipeSocial.Domain.Entities.User", "User")
                         .WithMany("Recipes")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("RecipeSocial.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

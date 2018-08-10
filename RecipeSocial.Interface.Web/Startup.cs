@@ -27,13 +27,14 @@ namespace RecipeSocial.Interface.Web
         {
             services.AddMvc();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<DbContext, DatabaseContext>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IRecipeTagRepository, RecipeTagRepository>();
-            services.AddScoped<IRecipeService, RecipeService>();
-            services.AddScoped<IUserService, UserService>();
 
-            //services.AddTransient<IRecipeTagRepository, RecipeTagRepository>();
+            services.AddTransient<DbContext, DatabaseContext>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IRecipeTagRepository, RecipeTagRepository>();
+            services.AddTransient<IRecipeService, RecipeService>();
+            services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMeasureService, MeasureService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

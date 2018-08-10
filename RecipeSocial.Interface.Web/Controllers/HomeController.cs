@@ -13,9 +13,11 @@ namespace RecipeSocial.Interface.Web.Controllers
     public class HomeController : Controller
     {
         private IRecipeService recipeService;
-        public HomeController(IRecipeService recipeService)
+        private readonly IMeasureService measureService;
+        public HomeController(IRecipeService recipeService, IMeasureService measureService)
         {
             this.recipeService = recipeService;
+            this.measureService = measureService;
         }
         public IActionResult Index()
         {
@@ -27,6 +29,7 @@ namespace RecipeSocial.Interface.Web.Controllers
                 generalRecipeList = recipes,
                 topList = topRecipes
             };
+            ViewBag.MeasuresList = measureService.GetMeasures();
             return View(viewModel);
         }
 

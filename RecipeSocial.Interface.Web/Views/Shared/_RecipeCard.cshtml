@@ -8,10 +8,10 @@
 
         <div class="post_topbar">
             <div class="usy-dt">
-                <img src="images/resources/us-pic.png" alt="">
+                <img src="~/img/resources/us-pic.png" alt="">
                 <div class="usy-name">
-                    <h3>@Model.Name</h3>
-                    <span><img src="images/clock.png" alt="">3 min ago</span>
+                    <h3>@(Model.User.FirstName + " " + Model.User.LastName)</h3>
+                    <span><img src="~/img/clock.png" alt="">3 min ago</span>
                 </div>
             </div>
             <div class="ed-opts">
@@ -25,23 +25,32 @@
                 </ul>
             </div>
         </div>
-        <div class="epi-sec">
-            <ul class="descp">
-                <li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-                <li><img src="images/icon9.png" alt=""><span>India</span></li>
-            </ul>
-            <ul class="bk-links">
-                <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-            </ul>
-        </div>
         <div class="job_descp">
-            <h3>Senior Wordpress Developer</h3>
-            <ul class="job-dt">
-                <li><a href="#" title="">Full Time</a></li>
-                <li><span>$30 / hr</span></li>
-            </ul>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
+            <h3>@Model.Name</h3>
+            <p>@Model.Description</p>
+            <div class="ingredients">
+                <h3>Ingredientes</h3>
+                <ul>
+                    @foreach (Ingredient ingredient in Model.Ingredients.OrderBy(x => x.Order))
+                    {
+                        <li>
+                            <a href="#">@ingredient.Order</a> @ingredient.Quantity @ingredient.Name
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="instruction">
+                <hr />
+                <h3>Preparación</h3>
+                <ul>
+                    @foreach (Preparation preparation in Model.Preparations.OrderBy(x => x.Order))
+                    {
+                        <li>
+                            <a href="#">@preparation.Order</a> @preparation.Instruction
+                        </li>
+                    }
+                </ul>
+            </div>
             <ul class="skill-tags">
                 @foreach (RecipeTag recipeTag in Model.RecipeTags)
                 {
@@ -55,7 +64,7 @@
             <ul class="like-com">
                 <li>
                     <a href="#"><i class="la la-heart"></i>@Model.TotalLikes Likes</a>
-                    <img src="images/liked-img.png" alt="">
+                    <img src="~/img/liked-img.png" alt="">
                 </li>
             </ul>
             <a><i class="la la-eye"></i>Views 50</a>

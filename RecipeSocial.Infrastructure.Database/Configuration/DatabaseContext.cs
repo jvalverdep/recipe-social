@@ -18,6 +18,8 @@ namespace RecipeSocial.Infrastructure.Database.Configuration
         public DbSet<Recipe> Recipe { get; set; }
         public DbSet<User> User { get; set; }
 
+        public DbSet<Log> Log { get; set; }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
         }
@@ -34,6 +36,7 @@ namespace RecipeSocial.Infrastructure.Database.Configuration
             TagMapper.Map(modelBuilder.Entity<Tag>());
             RecipeMapper.Map(modelBuilder.Entity<Recipe>());
             UserMapper.Map(modelBuilder.Entity<User>());
+            LogMapper.Map(modelBuilder.Entity<Log>());
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {

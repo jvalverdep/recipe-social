@@ -6,6 +6,7 @@ namespace RecipeSocial.Domain.Entities
     {
         public int Order { get; set; }
         public string Name { get; set; }
+        public double Quantity { get; set; }
 
         public int MeasureId { get; set; }
         public Measure Measure { get; set; }

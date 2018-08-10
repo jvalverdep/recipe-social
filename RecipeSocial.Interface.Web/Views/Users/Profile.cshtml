@@ -36,7 +36,7 @@
                                     <ul class=flw-status style="margin-top: 15px;">
                                         <li>
                                             <span>Recipes Nº</span>
-                                            <b>10</b>
+                                            <b>@Model.Recipes.Count</b>
                                         </li>
                                     </ul>
                                 </div><!--user_pro_status end-->
@@ -117,6 +117,19 @@
                                         <ul>
                                 </div>
                             </div>*@
+                            <div class="post-topbar">
+                                 <div class=usy-dt>
+                                     <img src="~/img/resources/us-pic.png" alt="">
+                                     <div class=usy-name>
+                                         <h1>Javier, ¿En qué postre piensas hoy?</h1>
+                                     </div>
+                                 </div>
+                                 <div class="post-st">
+                                     <ul>
+                                         <li><a class="post_project" href="javascript:void(0);" title="">Create your Recipe!</a></li>
+                                     </ul>
+                                 </div>
+                            </div>
                             <div class="product-feed-tab current" id="feed-dd">
                                 <div class="posts-section">
                                     @foreach (Recipe recipe in Model.Recipes)
@@ -137,9 +150,9 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="right-sidebar">
-                            <div class="message-btn">
+                            @*<div class="message-btn">
                                 <a href="#" title=""><i class="fa fa-envelope"></i> Message</a>
-                            </div>
+                            </div>*@
                             <div class="widget widget-portfolio">
                                 <div class="wd-heady">
                                     <h3>Portfolio</h3>

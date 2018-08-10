@@ -5,7 +5,18 @@ namespace RecipeSocial.Domain.Entities
 {
     public class Recipe : Base
     {
+        public Recipe()
+        {
+            this.Ingredients = new HashSet<Ingredient>();
+            this.Preparations = new HashSet<Preparation>();
+            this.Comments = new HashSet<Comment>();
+            this.Likes = new HashSet<Like>();
+
+            this.RecipeTags = new HashSet<RecipeTag>();
+        }
+
         public string Name { get; set; }
+        public string Description { get; set; }
         public int TotalLikes { get; set; }
         public int Views { get; set; }
 

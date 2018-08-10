@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecipeSocial.Infrastructure.Database.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class Fixes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +28,7 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,7 +42,9 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,10 +58,10 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
                     TotalLikes = table.Column<int>(nullable: false),
                     Views = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    UserId1 = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,12 +69,6 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                     table.ForeignKey(
                         name: "FK_Recipe_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Recipe_User_UserId1",
-                        column: x => x.UserId1,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -84,6 +81,8 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RecipeId = table.Column<int>(nullable: false),
+                    Text = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -111,6 +110,7 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Order = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: false),
+                    Quantity = table.Column<double>(nullable: false),
                     MeasureId = table.Column<int>(nullable: false),
                     RecipeId = table.Column<int>(nullable: false)
                 },
@@ -241,11 +241,6 @@ namespace RecipeSocial.Infrastructure.Database.Migrations
                 name: "IX_Recipe_UserId",
                 table: "Recipe",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recipe_UserId1",
-                table: "Recipe",
-                column: "UserId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RecipeTag_TagId",

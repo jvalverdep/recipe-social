@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using RecipeSocial.Domain.Entities;
 using RecipeSocial.Domain.Services;
 using RecipeSocial.Interface.Web.ViewModels;
 
@@ -13,10 +14,12 @@ namespace RecipeSocial.Interface.Web.Controllers
     public class RecipeController : Controller
     {
         private readonly IRecipeService recipeService;
+        private readonly IMeasureService measureService;
 
-        public RecipeController(IRecipeService service)
+        public RecipeController(IRecipeService service, IMeasureService measureService)
         {
             recipeService = service;
+            this.measureService = measureService;
         }
 
         // GET: /<controller>/
@@ -25,17 +28,25 @@ namespace RecipeSocial.Interface.Web.Controllers
             RecipeViewModel model = new RecipeViewModel();
             //model.LoadData();
             model.Recipes = recipeService.GetRecipes().ToList();
+            ViewBag.MeasuresList = measureService.GetMeasures();
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(string title, string description)
+        public IActionResult Create(string title, string description, 
+                                    ICollection<Ingredient> ingredients,
+                                    ICollection<Preparation> preparations)
         {
             RecipeViewModel model = new RecipeViewModel();
             model.recipe.Name = title;
             model.recipe.UserId = 1;
+            model.recipe.Description = description;
+            model.recipe.Preparations = preparations;
+            //model.recipe.Ingredients = ingredients;
             recipeService.InsertRecipe(model.recipe);
-            return RedirectToAction("Index");
+
+            //System.Diagnostics.Debug
+            return RedirectToAction("Profile", "Users", new { id = 1});
         }
     }
 }
