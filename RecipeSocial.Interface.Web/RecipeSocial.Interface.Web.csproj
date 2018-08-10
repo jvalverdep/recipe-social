@@ -22,6 +22,10 @@
     <Content Remove="Views\Users\Edit.cshtml" />
     <Content Remove="Views\Users\Index.cshtml" />
     <Content Remove="Views\Recipe\Index.cshtml" />
+    <Content Remove="Views\Shared\_SmallRecipeCard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Shared\_SmallRecipeCard.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
@@ -31,6 +35,7 @@
     <None Include="Views\Users\Edit.cshtml" />
     <None Include="Views\Users\Index.cshtml" />
     <None Include="Views\Recipe\Index.cshtml" />
+    <None Include="Views\Shared\_SmallRecipeCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj" />
