@@ -31,5 +31,6 @@
   <ItemGroup>
     <ProjectReference Include="..\RecipeSocial.Infrastructure.Database\RecipeSocial.Infrastructure.Database.csproj" />
     <ProjectReference Include="..\RecipeSocial.Domain\RecipeSocial.Domain.csproj" />
+    <ProjectReference Include="..\RecipeSocial.Infrastructure.Services\RecipeSocial.Infrastructure.Services.csproj" />
   </ItemGroup>
 </Project>
