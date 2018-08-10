@@ -4,8 +4,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RecipeSocial.Domain.Database;
 using RecipeSocial.Domain.Entities;
+using RecipeSocial.Domain.Services;
+using RecipeSocial.Infrastructure.Database;
 using RecipeSocial.Infrastructure.Database.Configuration;
+using RecipeSocial.Infrastructure.Services;
 
 namespace RecipeSocial.Interface.Web
 {
@@ -22,6 +26,11 @@ namespace RecipeSocial.Interface.Web
         {
             services.AddMvc();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<DbContext, DatabaseContext>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IRecipeTagRepository, RecipeTagRepository>();
+            services.AddTransient<IRecipeService, RecipeService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
