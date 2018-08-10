@@ -1,4 +1,5 @@
-﻿@model Recipe
+﻿
+@model Recipe
 @{
     Layout = null;
 }
@@ -8,7 +9,7 @@
         <div class="usy-dt">
             <img src="images/resources/us-pic.png" alt="">
             <div class="usy-name">
-                <h3>John Doe</h3>
+                <h3>@Model.Name</h3>
                 <span><img src="images/clock.png" alt="">3 min ago</span>
             </div>
         </div>
@@ -41,21 +42,20 @@
         </ul>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
         <ul class="skill-tags">
-            <li><a href="#" title="">HTML</a></li>
-            <li><a href="#" title="">PHP</a></li>
-            <li><a href="#" title="">CSS</a></li>
-            <li><a href="#" title="">Javascript</a></li>
-            <li><a href="#" title="">Wordpress</a></li>
+            @foreach (RecipeTag recipeTag in Model.RecipeTags)
+            {
+                <li><a href="#" title="">@recipeTag.TagId</a></li>
+            }
+
+
         </ul>
     </div>
     <div class="job-status-bar">
         <ul class="like-com">
             <li>
-                <a href="#"><i class="la la-heart"></i> Like</a>
+                <a href="#"><i class="la la-heart"></i>@Model.TotalLikes Likes</a>
                 <img src="images/liked-img.png" alt="">
-                <span>25</span>
             </li>
-            <li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
         </ul>
         <a><i class="la la-eye"></i>Views 50</a>
     </div>
