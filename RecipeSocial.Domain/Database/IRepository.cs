@@ -8,9 +8,9 @@ namespace RecipeSocial.Domain.Database
 {
     public interface IRepository<T> where T: Base
     {
-        T Get(long id);
+        T Get(int id, params Expression<Func<T, object>>[] includes);
 
-        ICollection<T> GetAll();
+        ICollection<T> GetAll(params Expression<Func<T, object>>[] includes);
 
         ICollection<T> Find(Expression<Func<T, bool>> predicate);
 

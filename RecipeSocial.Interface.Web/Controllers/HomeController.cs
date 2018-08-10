@@ -13,11 +13,5 @@ namespace RecipeSocial.Interface.Web.Controllers
         {
             return View();
         }
-
-        public IActionResult Search(string search)
-        {
-            ICollection<Recipe> recipes = new List<Recipe>();
-            return View(recipes);
-        }
     }
 }
