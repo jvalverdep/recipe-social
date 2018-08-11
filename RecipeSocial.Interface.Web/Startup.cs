@@ -6,10 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RecipeSocial.Domain.Database;
 using RecipeSocial.Domain.Entities;
-using RecipeSocial.Domain.Services;
 using RecipeSocial.Infrastructure.Database;
-using RecipeSocial.Infrastructure.Database.Configuration;
 using RecipeSocial.Infrastructure.Services;
+using RecipeSocial.Infrastructure.Database.Configuration;
+using RecipeSocial.Domain.Services;
+
 
 namespace RecipeSocial.Interface.Web
 {
@@ -33,6 +34,7 @@ namespace RecipeSocial.Interface.Web
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMeasureService, MeasureService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

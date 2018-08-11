@@ -40,6 +40,11 @@ namespace RecipeSocial.Infrastructure.Services
         {
             return repository.GetAll();
         }
+
+        public void InsertRecipe(Recipe recipe)
+        {
+            repository.Add(recipe);
+        }
         public Recipe GetRecipe(int id)
         {
             return repository.Get(id, includes);

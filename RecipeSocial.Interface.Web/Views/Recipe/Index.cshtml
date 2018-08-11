@@ -1,0 +1,25 @@
+﻿@model RecipeSocial.Interface.Web.ViewModels.RecipeViewModel
+
+@{
+    ViewData["Title"] = "Recipes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <ul>
+        @foreach (var item in Model.Recipes)
+        {
+            <li>
+                @item.Name
+            </li>
+        }
+    </ul>
+
+</body>
+</html>

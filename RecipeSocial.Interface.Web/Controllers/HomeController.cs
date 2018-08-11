@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using log4net;
 using Microsoft.AspNetCore.Mvc;
 using RecipeSocial.Domain.Entities;
 using RecipeSocial.Domain.Services;
@@ -13,12 +12,12 @@ namespace RecipeSocial.Interface.Web.Controllers
 {
     public class HomeController : Controller
     {
-        ILog log = LogManager.GetLogger(typeof(HomeController));
         private IRecipeService recipeService;
-
-        public HomeController(IRecipeService recipeService)
+        private readonly IMeasureService measureService;
+        public HomeController(IRecipeService recipeService, IMeasureService measureService)
         {
             this.recipeService = recipeService;
+            this.measureService = measureService;
         }
         public IActionResult Index()
         {
@@ -30,10 +29,11 @@ namespace RecipeSocial.Interface.Web.Controllers
                 generalRecipeList = recipes,
                 topList = topRecipes
             };
-
-            log.Info("Page: Index");
-
+            ViewBag.MeasuresList = measureService.GetMeasures();
             return View(viewModel);
         }
+
+
+
     }
 }
